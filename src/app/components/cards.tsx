@@ -98,7 +98,12 @@ function GenerateCards({ cards, state }: {
         <div className="flex my-24">
             <motion.div className="cards-container flex flex-shrink-0">
                 {/* <Menu state={state} stateFunc={() => null} /> */}
-                {cards.map((card: any, index: number) => {
+                {cards.map((card: {
+                    title: string,
+                    subtitle: string,
+                    imageUrl: string,
+                    text: string,
+                }, index: number) => {
                     return (
                         <motion.div
                             key={index}
