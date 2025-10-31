@@ -2,16 +2,17 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   transpilePackages: ['three'],
-  experimental: {
-    turbo: {
-      rules: {
-        '*.{glsl}': {
-          loaders: ['raw-loader'],
-          as: '*.js',
-        },
+};
+
+module.exports = {
+  turbopack: {
+    rules: {
+      '*.glsl': {
+        loaders: ['raw-loader', 'glslify-loader'],
+        as: '*.js',
       },
     },
   },
-};
+}
 
 export default nextConfig;
