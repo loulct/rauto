@@ -123,31 +123,31 @@ const card_list = [
     {
         title: 'Le spécisme',
         subtitle: '1er pas vers la déhumanisation',
-        imageUrl: '/img/test.jpg',
+        imageUrl: '/rauto/img/test.jpg',
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: '/img/test_2.jpg',
+        imageUrl: '/rauto/img/test_2.jpg',
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: '/img/test_2.jpg',
+        imageUrl: '/rauto/img/test_2.jpg',
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: '/img/test_2.jpg',
+        imageUrl: '/rauto/img/test_2.jpg',
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: '/img/test_2.jpg',
+        imageUrl: '/rauto/img/test_2.jpg',
         text: ""
     },
 ];

@@ -67,7 +67,7 @@ function MarqueeSticker({ stickers, from = fromDefault, to = toDefault }: {
 };
 
 const stickers = [
-    "/svg/favicon.svg",
+    "/rauto/svg/favicon.svg",
 ];
 
 export function MarqueeStickers() {

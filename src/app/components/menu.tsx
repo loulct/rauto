@@ -6,22 +6,22 @@ const items = [
   {
     name: 'announcements',
     desc: 'Annonces',
-    imageUrl: '/svg/announcements.svg',
+    imageUrl: '/rauto/svg/announcements.svg',
   },
   {
     name: 'methods',
     desc: 'Méthodes',
-    imageUrl: '/svg/methods.svg',
+    imageUrl: '/rauto/svg/methods.svg',
   },
   {
     name: 'music',
     desc: 'Musique',
-    imageUrl: '/svg/music.svg',
+    imageUrl: '/rauto/svg/music.svg',
   },
   {
     name: 'art',
     desc: 'Art',
-    imageUrl: '/svg/art.svg',
+    imageUrl: '/rauto/svg/art.svg',
   },
 ];
 

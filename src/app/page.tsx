@@ -42,7 +42,7 @@ function Home() {
               <Counter />
               <MarqueeText />
               <MenuWrapper state={isActive} stateFunc={setIsActive}/>
-              <link rel="icon" href="/svg/favicon.svg" sizes="any" type="image/svg+xml"></link>
+              <link rel="icon" href="/rauto/svg/favicon.svg" sizes="any" type="image/rauto/svg+xml"></link>
             </main>
             <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
             </footer>

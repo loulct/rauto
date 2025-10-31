@@ -8,7 +8,7 @@ const circleRadius: string = "50%";
 const avatar = {
     name: 'Rouen Autonome',
     desc: 'Collectif d\'Éducation Populaire Antifasciste',
-    imageUrl: '/svg/favicon.svg',
+    imageUrl: '/rauto/svg/favicon.svg',
     imageSize: pixelSize,
     borderRadius: circleRadius
 };
