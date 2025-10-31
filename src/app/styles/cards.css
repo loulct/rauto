@@ -1,0 +1,51 @@
+.cards-container {
+    width: 100%;
+    justify-content: space-evenly;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.modal-card {
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    color: #171717;
+}
+
+.open-button {
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 17, 17, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.close-button {
+    margin: 20px;
+    cursor: pointer;
+    background-color: #f06565;
+    color: #ffffff;
+    font-size: 14;
+}
+
+.modal-card textarea {
+    resize: none;
+}
+
+.modal-card h1 {
+    font-size: 32;
+}
+
+.modal-card h2 {
+    font-size: 16;
+}

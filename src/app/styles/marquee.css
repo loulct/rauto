@@ -1,0 +1,9 @@
+.marquee-text-container{
+    width: 100%;
+}
+
+.marquee-text-content{
+    font-size: 24;
+    font-weight:700;
+    background-color: #f06565;
+}
