@@ -15,7 +15,7 @@ function CardContent({ card, onClose }: {
 },) {
     const rows: number = 30;
     const cols: number = 50;
-    const modalSpringTransition: {} = {
+    const modalSpringTransition: { duration: number, scale: { type: string, visualDuration: number, bounce: number } } = {
         duration: 0.3,
         scale: { type: "spring", visualDuration: 0.3, bounce: 0.2 },
     };
@@ -53,12 +53,12 @@ function Card({ card }: {
     },
 },
 ) {
-    const cardStyle: {} = {
+    const cardStyle: { height: number, width: number, borderRadius: string } = {
         height: 480,
         width: 384,
         borderRadius: "5%",
     };
-    const cardHover: {} = { scale: 1.1 };
+    const cardHover: { scale: number } = { scale: 1.1 };
 
     const [isOpen, setIsOpen] = useState(false);
     return (
@@ -66,7 +66,7 @@ function Card({ card }: {
             <button className="open-button" onClick={() => setIsOpen(true)}>
                 <motion.div
                     whileHover={cardHover}
-                    style={{padding: "5%"}}
+                    style={{ padding: "5%" }}
                 >
                     <img
                         className="card"
@@ -93,7 +93,7 @@ function GenerateCards({ cards, state }: {
     state: string,
 }) {
     const activeId: string = "announcements";
-    
+
     return (
         <div className="flex my-24">
             <motion.div className="cards-container flex flex-shrink-0">
@@ -147,7 +147,7 @@ const card_list = [
     },
 ];
 
-function Cards({state}: {state: string}) {
+function Cards({ state }: { state: string }) {
     return (
         <div className="overflow-hidden select-none">
             <GenerateCards cards={card_list} state={state} />

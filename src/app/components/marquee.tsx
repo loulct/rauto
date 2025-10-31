@@ -1,11 +1,11 @@
 import React from "react";
-import { motion } from "motion/react"
+import { Transition, motion } from "motion/react"
 import Image from "next/image";
 import "../styles/marquee.css"
 
 const fromDefault: string = "100%";
 const toDefault: string = "-100%";
-const marqueeTransition: {} = { duration: 30, repeat: Infinity, ease: "linear" };
+const marqueeTransition: Transition = { duration: 30, repeat: Infinity, ease: "linear" };
 
 function MarqueeTextContent({ texts, from = fromDefault, to = toDefault }: {
     texts: string[],
@@ -48,7 +48,7 @@ function MarqueeSticker({ stickers, from = fromDefault, to = toDefault }: {
     from?: string,
     to?: string
 }) {
-    const imgSize : number = 144;
+    const imgSize: number = 144;
     return (
         <div className="flex my-24">
             <motion.div

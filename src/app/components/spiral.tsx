@@ -6,16 +6,6 @@ import * as THREE from 'three';
 import { vertexShader } from '../shaders/vertexShader';
 import { fragmentShader } from '../shaders/fragmentShader';
 
-// declare global {
-//   namespace JSX {
-//     interface IntrinsicElements {
-//       mesh: any;
-//       planeGeometry: any;
-//       shaderMaterial: any;
-//     }
-//   }
-// }
-
 export interface PsychedelicSpiralProps extends React.HTMLAttributes<HTMLDivElement> {
   spinRotation?: number;
   spinSpeed?: number;

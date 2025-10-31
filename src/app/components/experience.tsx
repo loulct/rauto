@@ -1,7 +1,7 @@
 "use client"
 import * as THREE from 'three'
 import React, { Suspense, useRef } from 'react'
-import { Canvas, useFrame, ThreeElements } from '@react-three/fiber'
+import { Canvas, useFrame, ThreeElements, CameraProps } from '@react-three/fiber'
 import { AsciiRenderer, Center, Loader, Text3D } from '@react-three/drei'
 
 const spinResistance: number = 20;
@@ -30,8 +30,8 @@ function Text(props: ThreeElements['mesh']) {
     );
 };
 
-const cameraPosition: {} = { position: [1, 1, 1] };
-const canvasStyle: {} = {
+const cameraPosition: CameraProps = { position: [1, 1, 1] };
+const canvasStyle: React.CSSProperties = {
     position: 'fixed',
     top: 0,
     left: 0,

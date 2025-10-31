@@ -53,8 +53,8 @@ const MenuItem = (
   const imageSize: number = 92;
   const borderRadius: string = '50%';
 
-  const circleHover: {} = { scale: 1.1 };
-  const circleTap: {} = { scale: 0.95 };
+  const circleHover: { scale: number } = { scale: 1.1 };
+  const circleTap: { scale: number } = { scale: 0.95 };
 
   return (
     <motion.li
