@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { springTransition, startSpringAnimation, endSpringAnimation } from "./const"
 import "../styles/counter.css"
 
-let currentValue: number = 2600;
+const currentValue: number = 2600;
 
 function Counter() {
     const animationDuration: number = 3;

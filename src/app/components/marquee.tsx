@@ -5,7 +5,7 @@ import "../styles/marquee.css"
 
 const fromDefault: string = "100%";
 const toDefault: string = "-100%";
-const marqueeTransition: any = { duration: 30, repeat: Infinity, ease: "linear" };
+const marqueeTransition: {} = { duration: 30, repeat: Infinity, ease: "linear" };
 
 function MarqueeTextContent({ texts, from = fromDefault, to = toDefault }: {
     texts: string[],
@@ -20,7 +20,7 @@ function MarqueeTextContent({ texts, from = fromDefault, to = toDefault }: {
                 transition={marqueeTransition}
                 className="flex flex-shrink-0"
             >
-                {texts.map((text: any, index: number) => {
+                {texts.map((text: string, index: number) => {
                     return <h4 className="marquee-text-content" key={index}>--- {text} ---</h4>
                 })}
             </motion.div>
@@ -57,7 +57,7 @@ function MarqueeSticker({ stickers, from = fromDefault, to = toDefault }: {
                 transition={marqueeTransition}
                 className="flex flex-shrink-0"
             >
-                {stickers.map((sticker: any, index: number) => {
+                {stickers.map((sticker: string, index: number) => {
                     return <Image width={imgSize} height={imgSize} alt={`marqueImg${index}`}
                         className="object-contain pr-20" src={sticker} key={index} />
                 })}
@@ -66,7 +66,7 @@ function MarqueeSticker({ stickers, from = fromDefault, to = toDefault }: {
     );
 };
 
-let stickers = [
+const stickers = [
     "/svg/favicon.svg",
 ];
 

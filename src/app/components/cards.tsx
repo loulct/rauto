@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "motion/react"
 import { useState } from "react";
 import { startSpringAnimation, endSpringAnimation } from "./const";
 import "../styles/cards.css"
-import Menu from "./menu";
+// import Menu from "./menu";
 
 function CardContent({ card, onClose }: {
     card: {
@@ -15,7 +15,7 @@ function CardContent({ card, onClose }: {
 },) {
     const rows: number = 30;
     const cols: number = 50;
-    const modalSpringTransition: any = {
+    const modalSpringTransition: {} = {
         duration: 0.3,
         scale: { type: "spring", visualDuration: 0.3, bounce: 0.2 },
     };
@@ -53,12 +53,12 @@ function Card({ card }: {
     },
 },
 ) {
-    const cardStyle: any = {
+    const cardStyle: {} = {
         height: 480,
         width: 384,
         borderRadius: "5%",
     };
-    const cardHover: any = { scale: 1.1 };
+    const cardHover: {} = { scale: 1.1 };
 
     const [isOpen, setIsOpen] = useState(false);
     return (
@@ -114,7 +114,7 @@ function GenerateCards({ cards, state }: {
 };
 
 
-let card_list = [
+const card_list = [
     {
         title: 'Le spécisme',
         subtitle: '1er pas vers la déhumanisation',

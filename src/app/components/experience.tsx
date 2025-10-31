@@ -30,8 +30,8 @@ function Text(props: ThreeElements['mesh']) {
     );
 };
 
-const cameraPosition: any = { position: [1, 1, 1] };
-const canvasStyle: any = {
+const cameraPosition: {} = { position: [1, 1, 1] };
+const canvasStyle: {} = {
     position: 'fixed',
     top: 0,
     left: 0,
