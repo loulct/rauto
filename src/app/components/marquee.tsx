@@ -1,7 +1,6 @@
 import React from "react";
 import { Transition, motion } from "motion/react"
 import Image from "next/image";
-import "../styles/marquee.css"
 
 const fromDefault: string = "100%";
 const toDefault: string = "-100%";

@@ -1,7 +1,6 @@
 import { animate, motion, useMotionValue, useTransform } from "motion/react"
 import { useEffect } from "react"
 import { springTransition, startSpringAnimation, endSpringAnimation } from "./const"
-import "../styles/counter.css"
 
 const currentValue: number = 2600;
 

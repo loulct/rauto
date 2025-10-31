@@ -1,6 +1,5 @@
 import { useRef } from "react"
 import { motion, stagger } from "motion/react"
-import "../styles/menu.css"
 
 const items = [
   {

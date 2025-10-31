@@ -1,6 +1,5 @@
 import { motion } from "motion/react"
 import { springTransition, startSpringAnimation, endSpringAnimation } from "./const";
-import "../styles/title.css"
 
 const pixelSize: number = 144;
 const circleRadius: string = "50%";

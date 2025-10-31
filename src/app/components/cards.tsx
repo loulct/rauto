@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "motion/react"
 import { useState } from "react";
 import { startSpringAnimation, endSpringAnimation } from "./const";
-import "../styles/cards.css"
 // import Menu from "./menu";
 
 function CardContent({ card, onClose }: {
