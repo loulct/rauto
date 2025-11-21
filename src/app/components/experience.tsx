@@ -5,7 +5,7 @@ import { Canvas, useFrame, ThreeElements, CameraProps } from '@react-three/fiber
 import { AsciiRenderer, Center, Loader, Text3D } from '@react-three/drei'
 
 const mediaPath =
-  process.env.NODE_ENV === "production"
+  process.env.NEXT_PUBLIC_PLATFORM === "github-pages"
     ? "/rauto"
     : "";
 

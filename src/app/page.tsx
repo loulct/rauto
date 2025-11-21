@@ -9,7 +9,7 @@ import Loader from "./components/loader";
 import Spiral from "./components/spiral";
 
 const mediaPath =
-  process.env.NODE_ENV === "production"
+  process.env.NEXT_PUBLIC_PLATFORM === "github-pages"
     ? "/rauto"
     : "";
 
