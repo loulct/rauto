@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "motion/react"
 import { useState } from "react";
 import { startSpringAnimation, endSpringAnimation } from "./const";
-// import Menu from "./menu";
+import Menu from "./menu";
 
 function CardContent({ card, onClose }: {
     card: {
@@ -43,7 +43,7 @@ function CardContent({ card, onClose }: {
     );
 };
 
-function Card({ card }: {
+function AnnouncementCard({ card }: {
     card: {
         title: string,
         subtitle: string,
@@ -82,43 +82,132 @@ function Card({ card }: {
     );
 };
 
-function GenerateCards({ cards, state }: {
+function GenerateCards({ announcementcards, cards }: {
+    announcementcards: {
+        title: string,
+        subtitle: string,
+        imageUrl: string,
+        text: string,
+    }[],
     cards: {
         title: string,
         subtitle: string,
         imageUrl: string,
         text: string,
     }[],
-    state: string,
 }) {
-    const activeId: string = "announcements";
+    const announcementsId: string = "announcements";
+    const methodsId: string = "methods";
+    const musicId: string = "music";
+    const artId: string = "art";
+    const [isActive, setIsActive] = useState(announcementsId);
 
     return (
         <div className="flex my-24">
             <motion.div className="cards-container flex flex-shrink-0">
-                {/* <Menu state={state} stateFunc={() => null} /> */}
-                {cards.map((card: {
-                    title: string,
-                    subtitle: string,
-                    imageUrl: string,
-                    text: string,
-                }, index: number) => {
-                    return (
-                        <motion.div
-                            key={index}
-                            animate={state === activeId ? { scale: 1 } : { scale: 0 }}
-                        >
-                            <Card card={card} />
-                        </motion.div>
-                    )
-                })}
+                <Menu state={isActive} stateFunc={setIsActive} />
+                <AnimatePresence>
+                    {announcementcards.map((card: {
+                        title: string,
+                        subtitle: string,
+                        imageUrl: string,
+                        text: string,
+                    }, index: number) => {
+                        return (
+                            <motion.div
+                                key={announcementsId + index}
+                                animate={isActive === announcementsId ? { scale: 1 } : { scale: 0, display: "none" }}
+                            >
+                                <AnnouncementCard card={card} />
+                            </motion.div>
+                        )
+                    })}
+                </AnimatePresence>
+                <AnimatePresence>
+                    {cards.map((card: {
+                        title: string,
+                        subtitle: string,
+                        imageUrl: string,
+                        text: string,
+                    }, index: number) => {
+                        return (
+                            <motion.div
+                                key={methodsId + index}
+                                animate={isActive === methodsId ? { scale: 1 } : { scale: 0, display: "none" }}
+                            >
+                                <AnnouncementCard card={card} />
+                            </motion.div>
+                        )
+                    })}
+                </AnimatePresence>
+                <AnimatePresence>
+                    {cards.map((card: {
+                        title: string,
+                        subtitle: string,
+                        imageUrl: string,
+                        text: string,
+                    }, index: number) => {
+                        return (
+                            <motion.div
+                                key={musicId + index}
+                                animate={isActive === musicId ? { scale: 1 } : { scale: 0, display: "none" }}
+                            >
+                                <AnnouncementCard card={card} />
+                            </motion.div>
+                        )
+                    })}
+                </AnimatePresence>
+                <AnimatePresence>
+                    {cards.map((card: {
+                        title: string,
+                        subtitle: string,
+                        imageUrl: string,
+                        text: string,
+                    }, index: number) => {
+                        return (
+                            <motion.div
+                                key={artId + index}
+                                animate={isActive === artId ? { scale: 1 } : { scale: 0, display: "none" }}
+                            >
+                                <AnnouncementCard card={card} />
+                            </motion.div>
+                        )
+                    })}
+                </AnimatePresence>
             </motion.div>
         </div>
     );
 };
 
 
-const card_list = [
+const card_list=[
+    {
+        title: 'New Age',
+        subtitle: 'Profit des croyanc€s',
+        imageUrl: '/rauto/img/test_2.jpg',
+        text: ""
+    },
+    {
+        title: 'New Age',
+        subtitle: 'Profit des croyanc€s',
+        imageUrl: '/rauto/img/test_2.jpg',
+        text: ""
+    },
+    {
+        title: 'New Age',
+        subtitle: 'Profit des croyanc€s',
+        imageUrl: '/rauto/img/test_2.jpg',
+        text: ""
+    },
+    {
+        title: 'New Age',
+        subtitle: 'Profit des croyanc€s',
+        imageUrl: '/rauto/img/test_2.jpg',
+        text: ""
+    },
+]
+
+const announcement_card_list = [
     {
         title: 'Le spécisme',
         subtitle: '1er pas vers la déhumanisation',
@@ -151,10 +240,10 @@ const card_list = [
     },
 ];
 
-function Cards({ state }: { state: string }) {
+function Cards() {
     return (
         <div className="overflow-hidden select-none">
-            <GenerateCards cards={card_list} state={state} />
+            <GenerateCards announcementcards={announcement_card_list} cards={card_list}/>
         </div>
     );
 };

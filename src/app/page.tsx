@@ -2,7 +2,7 @@
 import Counter from "./components/counter";
 import Title from "./components/title";
 import MarqueeText from "./components/marquee";
-import MenuWrapper from "./components/menuWrapper";
+import Cards from "./components/cards";
 import Experience from "./components/experience";
 import { useState, useEffect } from "react"
 import Loader from "./components/loader";
@@ -16,9 +16,6 @@ function Home() {
     const timer = setTimeout(() => setLoading(false), delay);
     return () => clearTimeout(timer);
   }, []);
-
-  const activeId: string = "announcements";
-  const [isActive, setIsActive] = useState(activeId);
 
   return (
     <>
@@ -41,7 +38,7 @@ function Home() {
               <Title />
               <Counter />
               <MarqueeText />
-              <MenuWrapper state={isActive} stateFunc={setIsActive}/>
+              <Cards />
               <link rel="icon" href="/rauto/svg/favicon.svg" sizes="any" type="image/rauto/svg+xml"></link>
             </main>
             <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
