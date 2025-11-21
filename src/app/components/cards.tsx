@@ -76,6 +76,8 @@ function AnnouncementCard({ card }: {
                     <Image
                         className="card"
                         src={card.imageUrl}
+                        width={cardStyle.width}
+                        height={cardStyle.height}
                         alt={'Image de ' + card.title}
                         style={cardStyle}
                     />

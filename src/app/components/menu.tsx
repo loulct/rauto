@@ -74,6 +74,8 @@ const MenuItem = (
           className={items[i].name}
           src={items[i].imageUrl}
           alt={'Image de ' + items[i].name}
+          width={imageSize}
+          height={imageSize}
           style={{
             width: imageSize,
             height: imageSize,

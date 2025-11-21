@@ -25,6 +25,8 @@ function Avatar() {
                 className="avatar"
                 src={avatar.imageUrl}
                 alt={'Image de ' + avatar.name}
+                width={avatar.imageSize}
+                height={avatar.imageSize}
                 style={{
                     width: avatar.imageSize,
                     height: avatar.imageSize,
