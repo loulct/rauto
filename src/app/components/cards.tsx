@@ -5,9 +5,9 @@ import Menu from "./menu";
 import Image from "next/image";
 
 const mediaPath =
-  process.env.NODE_ENV === "production"
-    ? "/rauto"
-    : "";
+    process.env.NODE_ENV === "production"
+        ? "/rauto"
+        : "";
 
 function CardContent({ card, onClose }: {
     card: {
@@ -49,24 +49,21 @@ function CardContent({ card, onClose }: {
     );
 };
 function MethodCard({ card }: {
-    card: {
-    },
+    card: object,
 },
 ) {
     return (<></>)
 }
 
 function MusicCard({ card }: {
-    card: {
-    },
+    card: object,
 },
 ) {
     return (<></>)
 }
 
 function ArtCard({ card }: {
-    card: {
-    },
+    card: object,
 },
 ) {
     return (<></>)
@@ -144,7 +141,7 @@ function GenerateCards({ announcementcards, methodcards, musiccards, artcards }:
                         imageUrl: string,
                         text: string,
                     }, index: number) => {
-                        if (methodcards.length == 0 || musiccards.length == 0 || artcards.length == 0 ){
+                        if (methodcards.length == 0 || musiccards.length == 0 || artcards.length == 0) {
                             return (
                                 <motion.div
                                     key={announcementsId + index}
@@ -153,7 +150,7 @@ function GenerateCards({ announcementcards, methodcards, musiccards, artcards }:
                                     <AnnouncementCard card={card} />
                                 </motion.div>
                             )
-                        }else{
+                        } else {
                             return (
                                 <motion.div
                                     key={announcementsId + index}
@@ -245,7 +242,7 @@ const announcement_card_list = [
 function Cards() {
     return (
         <div className="overflow-hidden select-none">
-            <GenerateCards announcementcards={announcement_card_list} methodcards={[]} musiccards={[]} artcards={[]}/>
+            <GenerateCards announcementcards={announcement_card_list} methodcards={[]} musiccards={[]} artcards={[]} />
         </div>
     );
 };
