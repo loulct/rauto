@@ -5,9 +5,9 @@ import Menu from "./menu";
 import Image from "next/image";
 
 const mediaPath =
-    process.env.NEXT_PUBLIC_PLATFORM === "github-pages"
-        ? "/rauto"
-        : "";
+    process.env.NEXT_PUBLIC_PLATFORM === ("vercel" || "local")
+        ? ""
+        : "/rauto";
 
 function CardContent({ card, onClose }: {
     card: {

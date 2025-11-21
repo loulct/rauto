@@ -3,9 +3,9 @@ import { Transition, motion } from "motion/react"
 import Image from "next/image";
 
 const mediaPath =
-  process.env.NEXT_PUBLIC_PLATFORM === "github-pages"
-    ? "/rauto"
-    : "";
+  process.env.NEXT_PUBLIC_PLATFORM === ("vercel" || "local")
+    ? ""
+    : "/rauto";
 
 const fromDefault: string = "100%";
 const toDefault: string = "-100%";

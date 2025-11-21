@@ -9,9 +9,9 @@ import Loader from "./components/loader";
 import Spiral from "./components/spiral";
 
 const mediaPath =
-  process.env.NEXT_PUBLIC_PLATFORM === "github-pages"
-    ? "/rauto"
-    : "";
+  process.env.NEXT_PUBLIC_PLATFORM === ("vercel" || "local")
+    ? ""
+    : "/rauto";
 
 function Home() {
   const [loading, setLoading] = useState(true);

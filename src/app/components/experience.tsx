@@ -5,9 +5,9 @@ import { Canvas, useFrame, ThreeElements, CameraProps } from '@react-three/fiber
 import { AsciiRenderer, Center, Loader, Text3D } from '@react-three/drei'
 
 const mediaPath =
-  process.env.NEXT_PUBLIC_PLATFORM === "github-pages"
-    ? "/rauto"
-    : "";
+  process.env.NEXT_PUBLIC_PLATFORM === ("vercel" || "local")
+    ? ""
+    : "/rauto";
 
 const spinResistance: number = 20;
 const scaleValue: number = 0.8;
