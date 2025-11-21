@@ -3,9 +3,9 @@ import { springTransition, startSpringAnimation, endSpringAnimation } from "./co
 import Image from "next/image";
 
 const mediaPath =
-  process.env.NEXT_PUBLIC_PLATFORM === ("vercel" || "local")
+  process.env.NEXT_PUBLIC_PLATFORM === "vercel"
     ? ""
-    : "/rauto";
+    : process.env.NEXT_PUBLIC_PLATFORM === "local" ? "" : "/rauto";
 
 const pixelSize: number = 144;
 const circleRadius: string = "50%";

@@ -3,9 +3,9 @@ import { motion, stagger } from "motion/react"
 import Image from "next/image";
 
 const mediaPath =
-  process.env.NEXT_PUBLIC_PLATFORM === ("vercel" || "local")
+  process.env.NEXT_PUBLIC_PLATFORM === "vercel"
     ? ""
-    : "/rauto";
+    : process.env.NEXT_PUBLIC_PLATFORM === "local" ? "" : "/rauto";
 
 const items = [
   {

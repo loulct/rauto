@@ -9,9 +9,9 @@ import Loader from "./components/loader";
 import Spiral from "./components/spiral";
 
 const mediaPath =
-  process.env.NEXT_PUBLIC_PLATFORM === ("vercel" || "local")
+  process.env.NEXT_PUBLIC_PLATFORM === "vercel"
     ? ""
-    : "/rauto";
+    : process.env.NEXT_PUBLIC_PLATFORM === "local" ? "" : "/rauto";
 
 function Home() {
   const [loading, setLoading] = useState(true);
