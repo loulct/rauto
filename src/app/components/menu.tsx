@@ -1,5 +1,6 @@
 import { useRef } from "react"
 import { motion, stagger } from "motion/react"
+import Image from "next/image";
 
 const mediaPath =
   process.env.NODE_ENV === "production"
@@ -69,7 +70,7 @@ const MenuItem = (
       whileTap={circleTap}
     >
       <div className="menu-item-icon">
-        <img
+        <Image
           className={items[i].name}
           src={items[i].imageUrl}
           alt={'Image de ' + items[i].name}

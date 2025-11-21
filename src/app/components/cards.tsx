@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "motion/react"
 import { useState } from "react";
 import { startSpringAnimation, endSpringAnimation } from "./const";
 import Menu from "./menu";
+import Image from "next/image";
 
 const mediaPath =
   process.env.NODE_ENV === "production"
@@ -72,7 +73,7 @@ function AnnouncementCard({ card }: {
                     whileHover={cardHover}
                     style={{ padding: "5%" }}
                 >
-                    <img
+                    <Image
                         className="card"
                         src={card.imageUrl}
                         alt={'Image de ' + card.title}

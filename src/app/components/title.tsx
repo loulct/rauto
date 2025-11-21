@@ -1,5 +1,6 @@
 import { motion } from "motion/react"
 import { springTransition, startSpringAnimation, endSpringAnimation } from "./const";
+import Image from "next/image";
 
 const mediaPath =
   process.env.NODE_ENV === "production"
@@ -20,7 +21,7 @@ const avatar = {
 function Avatar() {
     return (
         <>
-            <img
+            <Image
                 className="avatar"
                 src={avatar.imageUrl}
                 alt={'Image de ' + avatar.name}
