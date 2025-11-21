@@ -7,6 +7,16 @@
 @import "./styles/menu.css";
 @import "./styles/title.css";
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img, canvas{
+  max-width: 100%;
+  height: auto;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
