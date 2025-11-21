@@ -11,7 +11,7 @@ import Spiral from "./components/spiral";
 const mediaPath =
   process.env.NODE_ENV === "production"
     ? "/rauto"
-    : "/";
+    : "";
 
 function Home() {
   const [loading, setLoading] = useState(true);
