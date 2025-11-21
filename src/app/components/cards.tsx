@@ -117,12 +117,9 @@ function GenerateCards({ announcementcards, methodcards, musiccards, artcards }:
         imageUrl: string,
         text: string,
     }[],
-    methodcards: {
-    }[],
-    musiccards: {
-    }[],
-    artcards: {
-    }[],
+    methodcards: object[],
+    musiccards: object[],
+    artcards: object[],
 }) {
     const announcementsId: string = "announcements";
     const methodsId: string = "methods";
@@ -163,8 +160,7 @@ function GenerateCards({ announcementcards, methodcards, musiccards, artcards }:
                     })}
                 </AnimatePresence>
                 <AnimatePresence>
-                    {methodcards.map((card: {
-                    }, index: number) => {
+                    {methodcards.map((card: object, index: number) => {
                         return (
                             <motion.div
                                 key={methodsId + index}
@@ -176,8 +172,7 @@ function GenerateCards({ announcementcards, methodcards, musiccards, artcards }:
                     })}
                 </AnimatePresence>
                 <AnimatePresence>
-                    {musiccards.map((card: {
-                    }, index: number) => {
+                    {musiccards.map((card: object, index: number) => {
                         return (
                             <motion.div
                                 key={musicId + index}
@@ -189,8 +184,7 @@ function GenerateCards({ announcementcards, methodcards, musiccards, artcards }:
                     })}
                 </AnimatePresence>
                 <AnimatePresence>
-                    {artcards.map((card: {
-                    }, index: number) => {
+                    {artcards.map((card: object, index: number) => {
                         return (
                             <motion.div
                                 key={artId + index}
