@@ -38,6 +38,11 @@
     transform: translate(-50%, -50%);
     -webkit-clip-path: polygon(10% 0%, 44% 0%, 70% 100%, 55% 100%);
     clip-path: polygon(10% 0%, 44% 0%, 70% 100%, 55% 100%);
+    backface-visibility: hidden;
+}
+
+.title h1{
+    overflow: visible;
 }
 
 .title::before,

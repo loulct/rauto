@@ -48,6 +48,29 @@ function CardContent({ card, onClose }: {
         </motion.div>
     );
 };
+function MethodCard({ card }: {
+    card: {
+    },
+},
+) {
+    return (<></>)
+}
+
+function MusicCard({ card }: {
+    card: {
+    },
+},
+) {
+    return (<></>)
+}
+
+function ArtCard({ card }: {
+    card: {
+    },
+},
+) {
+    return (<></>)
+}
 
 function AnnouncementCard({ card }: {
     card: {
@@ -90,18 +113,18 @@ function AnnouncementCard({ card }: {
     );
 };
 
-function GenerateCards({ announcementcards, cards }: {
+function GenerateCards({ announcementcards, methodcards, musiccards, artcards }: {
     announcementcards: {
         title: string,
         subtitle: string,
         imageUrl: string,
         text: string,
     }[],
-    cards: {
-        title: string,
-        subtitle: string,
-        imageUrl: string,
-        text: string,
+    methodcards: {
+    }[],
+    musiccards: {
+    }[],
+    artcards: {
     }[],
 }) {
     const announcementsId: string = "announcements";
@@ -121,63 +144,62 @@ function GenerateCards({ announcementcards, cards }: {
                         imageUrl: string,
                         text: string,
                     }, index: number) => {
-                        return (
-                            <motion.div
-                                key={announcementsId + index}
-                                animate={isActive === announcementsId ? { scale: 1 } : { scale: 0, display: "none" }}
-                            >
-                                <AnnouncementCard card={card} />
-                            </motion.div>
-                        )
+                        if (methodcards.length == 0 || musiccards.length == 0 || artcards.length == 0 ){
+                            return (
+                                <motion.div
+                                    key={announcementsId + index}
+                                    animate={isActive === announcementsId ? { scale: 1 } : { scale: 0 }}
+                                >
+                                    <AnnouncementCard card={card} />
+                                </motion.div>
+                            )
+                        }else{
+                            return (
+                                <motion.div
+                                    key={announcementsId + index}
+                                    animate={isActive === announcementsId ? { scale: 1 } : { scale: 0, display: "none" }}
+                                >
+                                    <AnnouncementCard card={card} />
+                                </motion.div>
+                            )
+                        }
                     })}
                 </AnimatePresence>
                 <AnimatePresence>
-                    {cards.map((card: {
-                        title: string,
-                        subtitle: string,
-                        imageUrl: string,
-                        text: string,
+                    {methodcards.map((card: {
                     }, index: number) => {
                         return (
                             <motion.div
                                 key={methodsId + index}
                                 animate={isActive === methodsId ? { scale: 1 } : { scale: 0, display: "none" }}
                             >
-                                <AnnouncementCard card={card} />
+                                <MethodCard card={card} />
                             </motion.div>
                         )
                     })}
                 </AnimatePresence>
                 <AnimatePresence>
-                    {cards.map((card: {
-                        title: string,
-                        subtitle: string,
-                        imageUrl: string,
-                        text: string,
+                    {musiccards.map((card: {
                     }, index: number) => {
                         return (
                             <motion.div
                                 key={musicId + index}
                                 animate={isActive === musicId ? { scale: 1 } : { scale: 0, display: "none" }}
                             >
-                                <AnnouncementCard card={card} />
+                                <MusicCard card={card} />
                             </motion.div>
                         )
                     })}
                 </AnimatePresence>
                 <AnimatePresence>
-                    {cards.map((card: {
-                        title: string,
-                        subtitle: string,
-                        imageUrl: string,
-                        text: string,
+                    {artcards.map((card: {
                     }, index: number) => {
                         return (
                             <motion.div
                                 key={artId + index}
                                 animate={isActive === artId ? { scale: 1 } : { scale: 0, display: "none" }}
                             >
-                                <AnnouncementCard card={card} />
+                                <ArtCard card={card} />
                             </motion.div>
                         )
                     })}
@@ -186,34 +208,6 @@ function GenerateCards({ announcementcards, cards }: {
         </div>
     );
 };
-
-
-const card_list=[
-    {
-        title: 'New Age',
-        subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}/img/test_2.jpg`,
-        text: ""
-    },
-    {
-        title: 'New Age',
-        subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}/img/test_2.jpg`,
-        text: ""
-    },
-    {
-        title: 'New Age',
-        subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}/img/test_2.jpg`,
-        text: ""
-    },
-    {
-        title: 'New Age',
-        subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}/img/test_2.jpg`,
-        text: ""
-    },
-]
 
 const announcement_card_list = [
     {
@@ -251,7 +245,7 @@ const announcement_card_list = [
 function Cards() {
     return (
         <div className="overflow-hidden select-none">
-            <GenerateCards announcementcards={announcement_card_list} cards={card_list}/>
+            <GenerateCards announcementcards={announcement_card_list} methodcards={[]} musiccards={[]} artcards={[]}/>
         </div>
     );
 };

@@ -75,6 +75,8 @@ body {
   }
   .title {
     margin-left: 40%;
+    scale: 65%;
+    padding: 5%;
   }
 }
 
@@ -90,8 +92,6 @@ body {
 
   .title {
     margin-left: 35%;
-    scale: 70%;
-    padding: 5%;
   }
 
   .desc {
