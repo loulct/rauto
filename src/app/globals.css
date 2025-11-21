@@ -7,12 +7,14 @@
 @import "./styles/menu.css";
 @import "./styles/title.css";
 
-html, body {
+html,
+body {
   max-width: 100%;
   overflow-x: hidden;
 }
 
-img, canvas{
+img,
+canvas {
   max-width: 100%;
   height: auto;
 }
@@ -53,35 +55,63 @@ body {
 
 
 @media (max-width: 968px) {
-  .title-wrapper{
+  .title-wrapper {
     width: calc(100% + 30px);
   }
 }
 
-@media (max-width: 500px) {
-  .desc{
-    width: 70%;
-  }
-  .title{
-    display: none;
-  }
-  .counter-wrapper{
-    width: calc(100% - 30px);
-  }
-  .menu{
-    width: calc(100% - 20%);
-  }
-  .modal-wrapper{
-    width: calc(100% - 10%);
+@media (max-width: 1078px){
+  .title {
+    margin-left: 30%;
   }
   .modal-card{
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    margin-top: 25%;
   }
 }
 
-@media (min-width: 1500px) {
+@media (max-width: 724px){
+  .counter-wrapper {
+    margin-left: 70%;
+  }
+  .title {
+    margin-left: 40%;
+  }
+}
 
+@media (max-width: 574px) {
+  .title-wrapper {
+    margin-left: 0%;
+  }
+
+  .title-wrapper img {
+    margin-top: 15%;
+    margin-left: 20%;
+  }
+
+  .title {
+    margin-left: 35%;
+    scale: 70%;
+    padding: 5%;
+  }
+
+  .desc {
+    width: 70%;
+  }
+
+  .counter-wrapper {
+    width: calc(100% - 30px);
+    margin-left: 60%;
+  }
+}
+
+@media (max-height: 620px){
+  .modal-card{
+    margin-top: 25%;
+  }
+}
+
+@media (max-height: 420px){
+  .modal-card{
+    margin-top: auto;
+  }
 }

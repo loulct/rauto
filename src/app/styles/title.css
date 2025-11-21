@@ -1,15 +1,23 @@
 .title-wrapper{
-    margin-left: 10%;
+    margin-left: 5%;
+}
+
+.title-wrapper img{
+    margin-top: 50%;
+    margin-left: 100%;
 }
 
 .desc{
     font-size: 24;
     background-color: #000000;
+    width: fit-content;
+    margin-left: 10%;
 }
 
 .title {
     margin-left: 20%;
-    padding: 5%;
+    margin-top: 2%;
+    padding: 2%;
     font-family: punkbabe, 'Montserrat', Arial, sans-serif;
     font-size: 64;
     font-weight: 700;
