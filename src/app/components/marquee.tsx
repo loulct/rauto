@@ -5,7 +5,7 @@ import Image from "next/image";
 const mediaPath =
   process.env.NODE_ENV === "production"
     ? "/rauto"
-    : "/";
+    : "";
 
 const fromDefault: string = "100%";
 const toDefault: string = "-100%";
@@ -71,7 +71,7 @@ function MarqueeSticker({ stickers, from = fromDefault, to = toDefault }: {
 };
 
 const stickers = [
-    `${mediaPath}svg/favicon.svg`,
+    `${mediaPath}/svg/favicon.svg`,
 ];
 
 export function MarqueeStickers() {

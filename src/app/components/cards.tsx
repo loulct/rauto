@@ -7,7 +7,7 @@ import Image from "next/image";
 const mediaPath =
   process.env.NODE_ENV === "production"
     ? "/rauto"
-    : "/";
+    : "";
 
 function CardContent({ card, onClose }: {
     card: {
@@ -192,25 +192,25 @@ const card_list=[
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}img/test_2.jpg`,
+        imageUrl: `${mediaPath}/img/test_2.jpg`,
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}img/test_2.jpg`,
+        imageUrl: `${mediaPath}/img/test_2.jpg`,
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}img/test_2.jpg`,
+        imageUrl: `${mediaPath}/img/test_2.jpg`,
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}img/test_2.jpg`,
+        imageUrl: `${mediaPath}/img/test_2.jpg`,
         text: ""
     },
 ]
@@ -219,31 +219,31 @@ const announcement_card_list = [
     {
         title: 'Le spécisme',
         subtitle: '1er pas vers la déhumanisation',
-        imageUrl: `${mediaPath}img/test.jpg`,
+        imageUrl: `${mediaPath}/img/test.jpg`,
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}img/test_2.jpg`,
+        imageUrl: `${mediaPath}/img/test_2.jpg`,
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}img/test_2.jpg`,
+        imageUrl: `${mediaPath}/img/test_2.jpg`,
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}img/test_2.jpg`,
+        imageUrl: `${mediaPath}/img/test_2.jpg`,
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}img/test_2.jpg`,
+        imageUrl: `${mediaPath}/img/test_2.jpg`,
         text: ""
     },
 ];

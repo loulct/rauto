@@ -44,7 +44,7 @@ function Home() {
               <Counter />
               <MarqueeText />
               <Cards />
-              <link rel="icon" href={`${mediaPath}svg/favicon.svg`} sizes="any" type={`image${mediaPath}svg+xml`}></link>
+              <link rel="icon" href={`${mediaPath}/svg/favicon.svg`} sizes="any" type={`image${mediaPath}/svg+xml`}></link>
             </main>
           </div>
         </>

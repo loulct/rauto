@@ -5,28 +5,28 @@ import Image from "next/image";
 const mediaPath =
   process.env.NODE_ENV === "production"
     ? "/rauto"
-    : "/";
+    : "";
 
 const items = [
   {
     name: 'announcements',
     desc: 'Annonces',
-    imageUrl: `${mediaPath}svg/announcements.svg`,
+    imageUrl: `${mediaPath}/svg/announcements.svg`,
   },
   {
     name: 'methods',
     desc: 'Méthodes',
-    imageUrl: `${mediaPath}svg/methods.svg`,
+    imageUrl: `${mediaPath}/svg/methods.svg`,
   },
   {
     name: 'music',
     desc: 'Musique',
-    imageUrl: `${mediaPath}svg/music.svg`,
+    imageUrl: `${mediaPath}/svg/music.svg`,
   },
   {
     name: 'art',
     desc: 'Art',
-    imageUrl: `${mediaPath}svg/art.svg`,
+    imageUrl: `${mediaPath}/svg/art.svg`,
   },
 ];
 

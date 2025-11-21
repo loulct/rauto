@@ -5,7 +5,7 @@ import Image from "next/image";
 const mediaPath =
   process.env.NODE_ENV === "production"
     ? "/rauto"
-    : "/";
+    : "";
 
 const pixelSize: number = 144;
 const circleRadius: string = "50%";
@@ -13,7 +13,7 @@ const circleRadius: string = "50%";
 const avatar = {
     name: 'Rouen Autonome',
     desc: 'Collectif d\'Éducation Populaire Antifasciste',
-    imageUrl: `${mediaPath}svg/favicon.svg`,
+    imageUrl: `${mediaPath}/svg/favicon.svg`,
     imageSize: pixelSize,
     borderRadius: circleRadius
 };
