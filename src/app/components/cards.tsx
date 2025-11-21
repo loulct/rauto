@@ -3,6 +3,11 @@ import { useState } from "react";
 import { startSpringAnimation, endSpringAnimation } from "./const";
 import Menu from "./menu";
 
+const mediaPath =
+  process.env.NODE_ENV === "production"
+    ? "/rauto"
+    : "/";
+
 function CardContent({ card, onClose }: {
     card: {
         title: string,
@@ -184,25 +189,25 @@ const card_list=[
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: '/rauto/img/test_2.jpg',
+        imageUrl: `${mediaPath}img/test_2.jpg`,
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: '/rauto/img/test_2.jpg',
+        imageUrl: `${mediaPath}img/test_2.jpg`,
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: '/rauto/img/test_2.jpg',
+        imageUrl: `${mediaPath}img/test_2.jpg`,
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: '/rauto/img/test_2.jpg',
+        imageUrl: `${mediaPath}img/test_2.jpg`,
         text: ""
     },
 ]
@@ -211,31 +216,31 @@ const announcement_card_list = [
     {
         title: 'Le spécisme',
         subtitle: '1er pas vers la déhumanisation',
-        imageUrl: '/rauto/img/test.jpg',
+        imageUrl: `${mediaPath}img/test.jpg`,
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: '/rauto/img/test_2.jpg',
+        imageUrl: `${mediaPath}img/test_2.jpg`,
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: '/rauto/img/test_2.jpg',
+        imageUrl: `${mediaPath}img/test_2.jpg`,
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: '/rauto/img/test_2.jpg',
+        imageUrl: `${mediaPath}img/test_2.jpg`,
         text: ""
     },
     {
         title: 'New Age',
         subtitle: 'Profit des croyanc€s',
-        imageUrl: '/rauto/img/test_2.jpg',
+        imageUrl: `${mediaPath}img/test_2.jpg`,
         text: ""
     },
 ];

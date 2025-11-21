@@ -8,6 +8,11 @@ import { useState, useEffect } from "react"
 import Loader from "./components/loader";
 import Spiral from "./components/spiral";
 
+const mediaPath =
+  process.env.NODE_ENV === "production"
+    ? "/rauto"
+    : "/";
+
 function Home() {
   const [loading, setLoading] = useState(true);
   const delay: number = 3000;
@@ -32,17 +37,15 @@ function Home() {
                 zIndex: 1
               }
             }
-            className="font-sans grid grid-rows-[20px_1fr_20px] items-center min-h-screen p-8 pb-20 gap-16 sm:p-20"
+            className="home"
           >
-            <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+            <main className="main">
               <Title />
               <Counter />
               <MarqueeText />
               <Cards />
-              <link rel="icon" href="/rauto/svg/favicon.svg" sizes="any" type="image/rauto/svg+xml"></link>
+              <link rel="icon" href={`${mediaPath}svg/favicon.svg`} sizes="any" type={`image${mediaPath}svg+xml`}></link>
             </main>
-            <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-            </footer>
           </div>
         </>
       )}

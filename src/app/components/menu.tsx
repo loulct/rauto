@@ -1,26 +1,31 @@
 import { useRef } from "react"
 import { motion, stagger } from "motion/react"
 
+const mediaPath =
+  process.env.NODE_ENV === "production"
+    ? "/rauto"
+    : "/";
+
 const items = [
   {
     name: 'announcements',
     desc: 'Annonces',
-    imageUrl: '/rauto/svg/announcements.svg',
+    imageUrl: `${mediaPath}svg/announcements.svg`,
   },
   {
     name: 'methods',
     desc: 'Méthodes',
-    imageUrl: '/rauto/svg/methods.svg',
+    imageUrl: `${mediaPath}svg/methods.svg`,
   },
   {
     name: 'music',
     desc: 'Musique',
-    imageUrl: '/rauto/svg/music.svg',
+    imageUrl: `${mediaPath}svg/music.svg`,
   },
   {
     name: 'art',
     desc: 'Art',
-    imageUrl: '/rauto/svg/art.svg',
+    imageUrl: `${mediaPath}svg/art.svg`,
   },
 ];
 

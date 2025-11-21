@@ -1,13 +1,18 @@
 import { motion } from "motion/react"
 import { springTransition, startSpringAnimation, endSpringAnimation } from "./const";
 
+const mediaPath =
+  process.env.NODE_ENV === "production"
+    ? "/rauto"
+    : "/";
+
 const pixelSize: number = 144;
 const circleRadius: string = "50%";
 
 const avatar = {
     name: 'Rouen Autonome',
     desc: 'Collectif d\'Éducation Populaire Antifasciste',
-    imageUrl: '/rauto/svg/favicon.svg',
+    imageUrl: `${mediaPath}svg/favicon.svg`,
     imageSize: pixelSize,
     borderRadius: circleRadius
 };

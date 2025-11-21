@@ -4,9 +4,14 @@ import React, { Suspense, useRef } from 'react'
 import { Canvas, useFrame, ThreeElements, CameraProps } from '@react-three/fiber'
 import { AsciiRenderer, Center, Loader, Text3D } from '@react-three/drei'
 
+const mediaPath =
+  process.env.NODE_ENV === "production"
+    ? "/rauto"
+    : "/";
+
 const spinResistance: number = 20;
 const scaleValue: number = 0.8;
-const fontPath: string = "/rauto/fonts/anarchy_regular.json";
+const fontPath: string = `${mediaPath}fonts/anarchy_regular.json`;
 
 function Text(props: ThreeElements['mesh']) {
     const meshRef = useRef<THREE.Mesh>(null!);

@@ -1,6 +1,4 @@
 .menu{
-    /* margin-top: 1.5%; */
-    /* margin-bottom: 1%; */
     height: 480;
 }
 
@@ -22,7 +20,6 @@
 
 .menu-container {
     position: relative;
-    /* position: fixed */
     display: flex;
     justify-content: flex-start;
     align-items: stretch;
@@ -41,7 +38,6 @@
 
 .menu-background {
     background-color: #DE443B;
-    /*#ef1a1a*/
     position: absolute;
     top: 0;
     left: 0;
@@ -52,10 +48,8 @@
 .menu-list {
     list-style: none;
     padding: 25;
-    /* padding: 0; */
     margin: 0;
     position: absolute;
-    /* top: 80; */
     width: 300;
 }
 

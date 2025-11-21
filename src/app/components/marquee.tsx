@@ -2,6 +2,11 @@ import React from "react";
 import { Transition, motion } from "motion/react"
 import Image from "next/image";
 
+const mediaPath =
+  process.env.NODE_ENV === "production"
+    ? "/rauto"
+    : "/";
+
 const fromDefault: string = "100%";
 const toDefault: string = "-100%";
 const marqueeTransition: Transition = { duration: 30, repeat: Infinity, ease: "linear" };
@@ -66,7 +71,7 @@ function MarqueeSticker({ stickers, from = fromDefault, to = toDefault }: {
 };
 
 const stickers = [
-    "/rauto/svg/favicon.svg",
+    `${mediaPath}svg/favicon.svg`,
 ];
 
 export function MarqueeStickers() {
