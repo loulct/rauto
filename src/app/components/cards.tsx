@@ -1,22 +1,16 @@
 import { AnimatePresence, motion } from "motion/react"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { startSpringAnimation, endSpringAnimation } from "./const";
 import Menu from "./menu";
 import Image from "next/image";
-import fetch from "../backend/fetch";
 
 const mediaPath =
     process.env.NEXT_PUBLIC_PLATFORM === "vercel"
         ? ""
         : process.env.NEXT_PUBLIC_PLATFORM === "local" ? "" : "/rauto";
 
-function CardContent({ card, onClose }: {
-    card: {
-        title: string,
-        subtitle: string,
-        imageUrl: string,
-        text: string,
-    },
+function CardContent({ blob, onClose }: {
+    blob: { url: string, name: string }
     onClose: () => void
 },) {
     const rows: number = 30;
@@ -40,11 +34,11 @@ function CardContent({ card, onClose }: {
                 <button className="close-button" onClick={onClose}>
                     Fermer
                 </button>
-                <h1>{card.title}</h1>
-                <h2>{card.subtitle}</h2>
+                <h1>{blob.name}</h1>
+                <h2>{blob.name}</h2>
                 <hr></hr>
                 <br></br>
-                <textarea rows={rows} cols={cols} disabled value={card.text}></textarea>
+                <textarea rows={rows} cols={cols} disabled value={blob.name}></textarea>
             </motion.div>
         </motion.div>
     );
@@ -70,13 +64,8 @@ function ArtCard({ card }: {
     return (<></>)
 }
 
-function AnnouncementCard({ card }: {
-    card: {
-        title: string,
-        subtitle: string,
-        imageUrl: string,
-        text: string,
-    },
+function AnnouncementCard({ blob }: {
+    blob: { url: string, name: string },
 },
 ) {
     const cardStyle: { height: number, width: number, borderRadius: string } = {
@@ -96,28 +85,23 @@ function AnnouncementCard({ card }: {
                 >
                     <Image
                         className="card"
-                        src={card.imageUrl}
+                        src={blob.url}
                         width={cardStyle.width}
                         height={cardStyle.height}
-                        alt={'Image de ' + card.title}
+                        alt={'Image de ' + blob.name}
                         style={cardStyle}
                     />
                 </motion.div>
             </button>
             <AnimatePresence>
-                {isOpen && <CardContent card={card} onClose={() => setIsOpen(false)} />}
+                {isOpen && <CardContent blob={blob} onClose={() => setIsOpen(false)} />}
             </AnimatePresence>
         </div>
     );
 };
 
-function GenerateCards({ announcementcards, methodcards, musiccards, artcards }: {
-    announcementcards: {
-        title: string,
-        subtitle: string,
-        imageUrl: string,
-        text: string,
-    }[],
+function GenerateCards({ announcementblobs, methodcards, musiccards, artcards }: {
+    announcementblobs: { url: string, name: string }[],
     methodcards: object[],
     musiccards: object[],
     artcards: object[],
@@ -128,27 +112,19 @@ function GenerateCards({ announcementcards, methodcards, musiccards, artcards }:
     const artId: string = "art";
     const [isActive, setIsActive] = useState(announcementsId);
 
-    const test = fetch("test/")
-    console.log(test)
-
     return (
         <div className="flex my-24">
             <motion.div className="cards-container flex flex-shrink-0">
                 <Menu state={isActive} stateFunc={setIsActive} />
                 <AnimatePresence>
-                    {announcementcards.map((card: {
-                        title: string,
-                        subtitle: string,
-                        imageUrl: string,
-                        text: string,
-                    }, index: number) => {
+                    {announcementblobs.map((blob: { url: string, name: string }, index: number) => {
                         if (methodcards.length == 0 || musiccards.length == 0 || artcards.length == 0) {
                             return (
                                 <motion.div
                                     key={announcementsId + index}
                                     animate={isActive === announcementsId ? { scale: 1 } : { scale: 0 }}
                                 >
-                                    <AnnouncementCard card={card} />
+                                    <AnnouncementCard blob={blob} />
                                 </motion.div>
                             )
                         } else {
@@ -157,7 +133,7 @@ function GenerateCards({ announcementcards, methodcards, musiccards, artcards }:
                                     key={announcementsId + index}
                                     animate={isActive === announcementsId ? { scale: 1 } : { scale: 0, display: "none" }}
                                 >
-                                    <AnnouncementCard card={card} />
+                                    {/* <AnnouncementCard card={card} /> */}
                                 </motion.div>
                             )
                         }
@@ -204,43 +180,19 @@ function GenerateCards({ announcementcards, methodcards, musiccards, artcards }:
     );
 };
 
-const announcement_card_list = [
-    {
-        title: 'Le spécisme',
-        subtitle: '1er pas vers la déhumanisation',
-        imageUrl: `${mediaPath}/img/test.jpg`,
-        text: ""
-    },
-    {
-        title: 'New Age',
-        subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}/img/test_2.jpg`,
-        text: ""
-    },
-    {
-        title: 'New Age',
-        subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}/img/test_2.jpg`,
-        text: ""
-    },
-    {
-        title: 'New Age',
-        subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}/img/test_2.jpg`,
-        text: ""
-    },
-    {
-        title: 'New Age',
-        subtitle: 'Profit des croyanc€s',
-        imageUrl: `${mediaPath}/img/test_2.jpg`,
-        text: ""
-    },
-];
-
 function Cards() {
+    const [blobs, setBlobs] = useState<{url: string, name: string}[]>([]);
+
+    useEffect(() => {
+        fetch("/api/files?prefix=test")
+            .then((res) => res.json())
+            .then((data) => data.filter((b: { url: string, name: string }) => !b.name.endsWith("/")))
+            .then((data) => setBlobs(data));
+    }, []);
+
     return (
         <div className="overflow-hidden select-none">
-            <GenerateCards announcementcards={announcement_card_list} methodcards={[]} musiccards={[]} artcards={[]} />
+            <GenerateCards announcementblobs={blobs} methodcards={[]} musiccards={[]} artcards={[]} />
         </div>
     );
 };
