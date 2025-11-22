@@ -3,6 +3,7 @@ import { useState } from "react";
 import { startSpringAnimation, endSpringAnimation } from "./const";
 import Menu from "./menu";
 import Image from "next/image";
+import fetch from "../backend/fetch";
 
 const mediaPath =
     process.env.NEXT_PUBLIC_PLATFORM === "vercel"
@@ -126,6 +127,9 @@ function GenerateCards({ announcementcards, methodcards, musiccards, artcards }:
     const musicId: string = "music";
     const artId: string = "art";
     const [isActive, setIsActive] = useState(announcementsId);
+
+    const test = fetch("test/")
+    console.log(test)
 
     return (
         <div className="flex my-24">
