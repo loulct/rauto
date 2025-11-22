@@ -8,6 +8,14 @@ function CardContent({ blob, onClose }: {
     blob: { url: string, name: string }
     onClose: () => void
 },) {
+    const [text, setText] = useState<string>();
+
+    useEffect(() => {
+        fetch(`/api/text?prefix=test/${blob.name}.txt`)
+            .then((res) => res.json())
+            .then((data) => setText(data));
+    }, []);
+
     const rows: number = 30;
     const cols: number = 50;
     const modalSpringTransition: { duration: number, scale: { type: string, visualDuration: number, bounce: number } } = {
@@ -30,10 +38,9 @@ function CardContent({ blob, onClose }: {
                     Fermer
                 </button>
                 <h1>{blob.name}</h1>
-                <h2>{blob.name}</h2>
                 <hr></hr>
                 <br></br>
-                <textarea rows={rows} cols={cols} disabled value={blob.name}></textarea>
+                <textarea rows={rows} cols={cols} disabled value={text}></textarea>
             </motion.div>
         </motion.div>
     );
@@ -128,7 +135,7 @@ function GenerateCards({ announcementblobs, methodcards, musiccards, artcards }:
                                     key={announcementsId + index}
                                     animate={isActive === announcementsId ? { scale: 1 } : { scale: 0, display: "none" }}
                                 >
-                                    {/* <AnnouncementCard card={card} /> */}
+                                    <AnnouncementCard blob={blob} />
                                 </motion.div>
                             )
                         }
@@ -179,9 +186,8 @@ function Cards() {
     const [blobs, setBlobs] = useState<{url: string, name: string}[]>([]);
 
     useEffect(() => {
-        fetch("/api/files?prefix=test")
+        fetch("/api/img?prefix=test")
             .then((res) => res.json())
-            .then((data) => data.filter((b: { url: string, name: string }) => !b.name.endsWith("/")))
             .then((data) => setBlobs(data));
     }, []);
 

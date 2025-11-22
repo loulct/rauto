@@ -8,10 +8,13 @@ export async function GET(req: Request) {
       prefix: prefix, token: process.env.BLOB_READ_WRITE_TOKEN
     });
 
-    const blobs = res.blobs.map((blob) => ({
-      name: blob.pathname,
-      url: blob.url,
-    }));
+    const blobs = res.blobs
+      .filter((b) => !b.pathname.endsWith("/"))
+      .filter((b) => b.pathname.endsWith(".jpg"))
+      .map((blob) => ({
+        name: blob.pathname.split("/").reverse().at(0)?.split(".").at(0),
+        url: blob.url,
+      }));
 
     return Response.json(blobs);
   } catch (err: unknown) {
