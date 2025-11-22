@@ -4,11 +4,6 @@ import { startSpringAnimation, endSpringAnimation } from "./const";
 import Menu from "./menu";
 import Image from "next/image";
 
-const mediaPath =
-    process.env.NEXT_PUBLIC_PLATFORM === "vercel"
-        ? ""
-        : process.env.NEXT_PUBLIC_PLATFORM === "local" ? "" : "/rauto";
-
 function CardContent({ blob, onClose }: {
     blob: { url: string, name: string }
     onClose: () => void

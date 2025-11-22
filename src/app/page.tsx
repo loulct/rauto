@@ -8,11 +8,6 @@ import { useState, useEffect } from "react"
 import Loader from "./components/loader";
 import Spiral from "./components/spiral";
 
-const mediaPath =
-  process.env.NEXT_PUBLIC_PLATFORM === "vercel"
-    ? ""
-    : process.env.NEXT_PUBLIC_PLATFORM === "local" ? "" : "/rauto";
-
 function Home() {
   const [loading, setLoading] = useState(true);
   const delay: number = 3000;
@@ -44,7 +39,7 @@ function Home() {
               <Counter />
               <MarqueeText />
               <Cards />
-              <link rel="icon" href={`${mediaPath}/svg/favicon.svg`} sizes="any" type={`image${mediaPath}/svg+xml`}></link>
+              <link rel="icon" href="/svg/favicon.svg" sizes="any" type="image/svg+xml"></link>
             </main>
           </div>
         </>

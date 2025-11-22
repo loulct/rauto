@@ -2,18 +2,13 @@ import { motion } from "motion/react"
 import { springTransition, startSpringAnimation, endSpringAnimation } from "./const";
 import Image from "next/image";
 
-const mediaPath =
-  process.env.NEXT_PUBLIC_PLATFORM === "vercel"
-    ? ""
-    : process.env.NEXT_PUBLIC_PLATFORM === "local" ? "" : "/rauto";
-
 const pixelSize: number = 144;
 const circleRadius: string = "50%";
 
 const avatar = {
     name: 'Rouen Autonome',
     desc: 'Collectif d\'Éducation Populaire Antifasciste',
-    imageUrl: `${mediaPath}/svg/favicon.svg`,
+    imageUrl: "/svg/favicon.svg",
     imageSize: pixelSize,
     borderRadius: circleRadius
 };

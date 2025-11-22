@@ -2,31 +2,26 @@ import { useRef } from "react"
 import { motion, stagger } from "motion/react"
 import Image from "next/image";
 
-const mediaPath =
-  process.env.NEXT_PUBLIC_PLATFORM === "vercel"
-    ? ""
-    : process.env.NEXT_PUBLIC_PLATFORM === "local" ? "" : "/rauto";
-
 const items = [
   {
     name: 'announcements',
     desc: 'Annonces',
-    imageUrl: `${mediaPath}/svg/announcements.svg`,
+    imageUrl: "/svg/announcements.svg",
   },
   {
     name: 'methods',
     desc: 'Méthodes',
-    imageUrl: `${mediaPath}/svg/methods.svg`,
+    imageUrl: "/svg/methods.svg",
   },
   {
     name: 'music',
     desc: 'Musique',
-    imageUrl: `${mediaPath}/svg/music.svg`,
+    imageUrl: "/svg/music.svg",
   },
   {
     name: 'art',
     desc: 'Art',
-    imageUrl: `${mediaPath}/svg/art.svg`,
+    imageUrl: "/svg/art.svg",
   },
 ];
 
