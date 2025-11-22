@@ -9,8 +9,9 @@ const nextConfig: NextConfig = {
     if (process.env.NEXT_PUBLIC_ENV === "static-export") {
       return [
         {
-          source: "/api/files",
+          source: "/rauto/api/*",
           destination: "/404",
+          permanent: false,
         },
       ];
     }
