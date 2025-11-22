@@ -14,8 +14,11 @@ export async function GET(req: Request) {
     }));
 
     return Response.json(blobs);
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error(err);
-    return new Response(JSON.stringify({ error: err.message }), { status: 500 });
+    if (err instanceof Error){
+      return new Response(JSON.stringify({ error: err.message }), { status: 500 });
+    }
+    return new Response(JSON.stringify({error: "Unknown error"}), {status: 500});
   }
 }
