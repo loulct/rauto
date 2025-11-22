@@ -2,7 +2,7 @@ import { list } from '@vercel/blob';
 import { exit } from 'process';
 
 if (process.env.NEXT_PUBLIC_ENV === "static-export") {
-  exit(1)
+  exit(0)
 }
 
 export async function GET(req: Request) {
