@@ -4,9 +4,9 @@ import Image from "next/image";
 
 const items = [
   {
-    name: 'announcements',
-    desc: 'Annonces',
-    imageUrl: "/svg/announcements.svg",
+    name: 'articles',
+    desc: 'Articles',
+    imageUrl: "/svg/articles.svg",
   },
   {
     name: 'methods',
@@ -26,10 +26,10 @@ const items = [
 ];
 
 const MenuItem = (
-  { state, stateFunc, i }:
+  { menu, menuFunc, i }:
     {
-      state: string,
-      stateFunc: (state: string) => void,
+      menu: string,
+      menuFunc: (menu: string) => void,
       i: number
     }
 ) => {
@@ -58,8 +58,8 @@ const MenuItem = (
 
   return (
     <motion.li
-      className={`menu-item-list ${state === items[i].name ? "active" : ""}`}
-      onClick={() => stateFunc(items[i].name)}
+      className={`menu-item-list ${menu === items[i].name ? "active" : ""}`}
+      onClick={() => menuFunc(items[i].name)}
       variants={itemVariants}
       whileHover={circleHover}
       whileTap={circleTap}
@@ -81,7 +81,7 @@ const MenuItem = (
       <div
         className="menu-item-text"
         style={
-          state === items[i].name ? { color: "white", backgroundColor: "black" } : {}
+          menu === items[i].name ? { color: "white", backgroundColor: "black" } : {}
         }>
         <h1>{items[i].desc}</h1>
       </div>
@@ -90,10 +90,10 @@ const MenuItem = (
 };
 
 function Navigation(
-  { state, stateFunc }:
+  { menu, menuFunc }:
     {
-      state: string,
-      stateFunc: (state: string) => void
+      menu: string,
+      menuFunc: (menu: string) => void
     }
 ) {
   const navVariants = {
@@ -108,17 +108,17 @@ function Navigation(
   return (
     <motion.ul className="menu-list" variants={navVariants}>
       {items.map((i) => (
-        <MenuItem state={state} stateFunc={stateFunc} i={items.indexOf(i)} key={items.indexOf(i)} />
+        <MenuItem menu={menu} menuFunc={menuFunc} i={items.indexOf(i)} key={items.indexOf(i)} />
       ))}
     </motion.ul>
   );
 };
 
 function Menu(
-  { state, stateFunc }:
+  { menu, menuFunc }:
     {
-      state: string,
-      stateFunc: (state: string) => void
+      menu: string,
+      menuFunc: (menu: string) => void
     }
 ) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -132,7 +132,7 @@ function Menu(
           ref={containerRef}
         >
           <motion.div className="menu-background" />
-          <Navigation state={state} stateFunc={stateFunc} />
+          <Navigation menu={menu} menuFunc={menuFunc} />
         </motion.nav>
       </div>
     </motion.div>

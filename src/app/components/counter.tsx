@@ -2,7 +2,7 @@ import { animate, motion, useMotionValue, useTransform } from "motion/react"
 import { useEffect } from "react"
 import { springTransition, startSpringAnimation, endSpringAnimation } from "./const"
 
-const currentValue: number = 2600;
+const currentValue: number = 2700;
 
 function Counter() {
     const animationDuration: number = 3;

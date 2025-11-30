@@ -10,7 +10,8 @@ export async function GET(req: Request) {
 
     const blobs = res.blobs
       .filter((b) => !b.pathname.endsWith("/"))
-      .filter((b) => b.pathname.endsWith(".jpg"))
+      .filter((b) => (b.pathname.endsWith(".jpg") || b.pathname.endsWith(".webp")))
+      .sort((a, b) => b.uploadedAt.getTime() - a.uploadedAt.getTime())
       .map((blob) => ({
         name: blob.pathname.split("/").reverse().at(0)?.split(".").at(0),
         url: blob.url,

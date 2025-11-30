@@ -1,18 +1,19 @@
 import { AnimatePresence, motion } from "motion/react"
 import { useEffect, useState } from "react";
-import { startSpringAnimation, endSpringAnimation } from "./const";
+import { startSpringAnimation, endSpringAnimation, articlesId, methodsId, musicId, artId, hostname } from "./const";
 import Menu from "./menu";
 import Image from "next/image";
 
-function CardContent({ blob, onClose }: {
+function CardContent({ menu, blob, onClose }: {
+    menu: string,
     blob: { url: string, name: string }
     onClose: () => void
 },) {
     const [text, setText] = useState<string>();
 
     useEffect(() => {
-        fetch(`/api/text?prefix=test/${blob.name}.txt`)
-            .then((res) => res.json())
+        fetch(`${hostname}/${menu}/${blob.name}.txt`)
+            .then((res) => res.text())
             .then((data) => setText(data));
     }, []);
 
@@ -45,29 +46,11 @@ function CardContent({ blob, onClose }: {
         </motion.div>
     );
 };
-function MethodCard({ card }: {
-    card: object,
-},
-) {
-    return (<></>)
-}
 
-function MusicCard({ card }: {
-    card: object,
-},
-) {
-    return (<></>)
-}
-
-function ArtCard({ card }: {
-    card: object,
-},
-) {
-    return (<></>)
-}
-
-function AnnouncementCard({ blob }: {
+function Card({ menu, blob, hasContent }: {
+    menu: string,
     blob: { url: string, name: string },
+    hasContent: boolean
 },
 ) {
     const cardStyle: { height: number, width: number, borderRadius: string } = {
@@ -96,83 +79,72 @@ function AnnouncementCard({ blob }: {
                 </motion.div>
             </button>
             <AnimatePresence>
-                {isOpen && <CardContent blob={blob} onClose={() => setIsOpen(false)} />}
+                {isOpen && hasContent && <CardContent menu={menu} blob={blob} onClose={() => setIsOpen(false)} />}
             </AnimatePresence>
         </div>
     );
 };
 
-function GenerateCards({ announcementblobs, methodcards, musiccards, artcards }: {
-    announcementblobs: { url: string, name: string }[],
-    methodcards: object[],
-    musiccards: object[],
-    artcards: object[],
+function GenerateCards({articlesBlobs, methodsBlobs, musicBlobs, artBlobs}:{
+    articlesBlobs: {url: string, name: string}[],
+    methodsBlobs: {url: string, name: string}[],
+    musicBlobs: {url: string, name: string}[],
+    artBlobs: {url: string, name: string}[],
 }) {
-    const announcementsId: string = "announcements";
-    const methodsId: string = "methods";
-    const musicId: string = "music";
-    const artId: string = "art";
-    const [isActive, setIsActive] = useState(announcementsId);
+    const [isActive, setIsActive] = useState(articlesId);
 
     return (
         <div className="flex my-24">
             <motion.div className="cards-container flex flex-shrink-0">
-                <Menu state={isActive} stateFunc={setIsActive} />
+                <Menu menu={isActive} menuFunc={setIsActive}/>
                 <AnimatePresence>
-                    {announcementblobs.map((blob: { url: string, name: string }, index: number) => {
-                        if (methodcards.length == 0 || musiccards.length == 0 || artcards.length == 0) {
-                            return (
-                                <motion.div
-                                    key={announcementsId + index}
-                                    animate={isActive === announcementsId ? { scale: 1 } : { scale: 0 }}
-                                >
-                                    <AnnouncementCard blob={blob} />
-                                </motion.div>
-                            )
-                        } else {
-                            return (
-                                <motion.div
-                                    key={announcementsId + index}
-                                    animate={isActive === announcementsId ? { scale: 1 } : { scale: 0, display: "none" }}
-                                >
-                                    <AnnouncementCard blob={blob} />
-                                </motion.div>
-                            )
-                        }
+                    {articlesBlobs.map((blob: { url: string, name: string }, index: number) => {
+                        return (
+                            <motion.div
+                                key={articlesId + index}
+                                style={{transition: "all 0.25s", transitionBehavior: "allow-discrete"}}
+                                animate={isActive === articlesId ? { scale: 1 } : { scale: 0, display: "none" }}
+                            >
+                                <Card menu={isActive} blob={blob} hasContent={true}/>
+                            </motion.div>
+                        )
                     })}
                 </AnimatePresence>
                 <AnimatePresence>
-                    {methodcards.map((card: object, index: number) => {
+                    {methodsBlobs.map((blob: { url: string, name: string }, index: number) => {
                         return (
                             <motion.div
                                 key={methodsId + index}
+                                style={{transition: "all 0.25s", transitionBehavior: "allow-discrete"}}
                                 animate={isActive === methodsId ? { scale: 1 } : { scale: 0, display: "none" }}
                             >
-                                <MethodCard card={card} />
+                                <Card menu={isActive} blob={blob} hasContent={true}/>
                             </motion.div>
                         )
                     })}
                 </AnimatePresence>
                 <AnimatePresence>
-                    {musiccards.map((card: object, index: number) => {
+                    {musicBlobs.map((blob: { url: string, name: string }, index: number) => {
                         return (
                             <motion.div
                                 key={musicId + index}
+                                style={{transition: "all 0.25s", transitionBehavior: "allow-discrete"}}
                                 animate={isActive === musicId ? { scale: 1 } : { scale: 0, display: "none" }}
                             >
-                                <MusicCard card={card} />
+                                <Card menu={isActive} blob={blob} hasContent={false} />
                             </motion.div>
                         )
                     })}
                 </AnimatePresence>
                 <AnimatePresence>
-                    {artcards.map((card: object, index: number) => {
+                    {artBlobs.map((blob: { url: string, name: string }, index: number) => {
                         return (
                             <motion.div
                                 key={artId + index}
+                                style={{transition: "all 0.25s", transitionBehavior: "allow-discrete"}}
                                 animate={isActive === artId ? { scale: 1 } : { scale: 0, display: "none" }}
                             >
-                                <ArtCard card={card} />
+                                <Card menu={isActive} blob={blob} hasContent={false}/>
                             </motion.div>
                         )
                     })}
@@ -183,17 +155,34 @@ function GenerateCards({ announcementblobs, methodcards, musiccards, artcards }:
 };
 
 function Cards() {
-    const [blobs, setBlobs] = useState<{url: string, name: string}[]>([]);
+    const [articlesBlobs, setArticlesBlobs] = useState<{ url: string, name: string }[]>([]);
+    const [methodsBlobs, setMethodsBlobs] = useState<{ url: string, name: string }[]>([]);
+    const [musicBlobs, setMusicBlobs] = useState<{ url: string, name: string }[]>([]);
+    const [artBlobs, setArtBlobs] = useState<{ url: string, name: string }[]>([]);
 
     useEffect(() => {
-        fetch("/api/img?prefix=test")
+        fetch(`/api/img?prefix=articles`)
             .then((res) => res.json())
-            .then((data) => setBlobs(data));
+            .then((data) => setArticlesBlobs(data));
     }, []);
-
+    useEffect(() => {
+        fetch(`/api/img?prefix=methods`)
+            .then((res) => res.json())
+            .then((data) => setMethodsBlobs(data));
+    }, []);
+    useEffect(() => {
+        fetch(`/api/img?prefix=music`)
+            .then((res) => res.json())
+            .then((data) => setMusicBlobs(data));
+    }, []);
+    useEffect(() => {
+        fetch(`/api/img?prefix=art`)
+            .then((res) => res.json())
+            .then((data) => setArtBlobs(data));
+    }, []);
     return (
         <div className="overflow-hidden select-none">
-            <GenerateCards announcementblobs={blobs} methodcards={[]} musiccards={[]} artcards={[]} />
+            <GenerateCards articlesBlobs={articlesBlobs} methodsBlobs={methodsBlobs} musicBlobs={musicBlobs} artBlobs={artBlobs}/>
         </div>
     );
 };
