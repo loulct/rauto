@@ -53,10 +53,9 @@ function Card({ menu, blob, hasContent }: {
     hasContent: boolean
 },
 ) {
-    const cardStyle: { height: number, width: number, borderRadius: string } = {
+    const cardStyle: { height: number, width: number } = {
         height: 480,
         width: 384,
-        borderRadius: "5%",
     };
     const cardHover: { scale: number } = { scale: 1.1 };
 
@@ -74,7 +73,7 @@ function Card({ menu, blob, hasContent }: {
                         width={cardStyle.width}
                         height={cardStyle.height}
                         alt={'Image de ' + blob.name}
-                        style={cardStyle}
+                        style={{height: "auto", borderRadius: "5%"}}
                     />
                 </motion.div>
             </button>
@@ -85,27 +84,27 @@ function Card({ menu, blob, hasContent }: {
     );
 };
 
-function GenerateCards({articlesBlobs, methodsBlobs, musicBlobs, artBlobs}:{
-    articlesBlobs: {url: string, name: string}[],
-    methodsBlobs: {url: string, name: string}[],
-    musicBlobs: {url: string, name: string}[],
-    artBlobs: {url: string, name: string}[],
+function GenerateCards({ articlesBlobs, methodsBlobs, musicBlobs, artBlobs }: {
+    articlesBlobs: { url: string, name: string }[],
+    methodsBlobs: { url: string, name: string }[],
+    musicBlobs: { url: string, name: string }[],
+    artBlobs: { url: string, name: string }[],
 }) {
     const [isActive, setIsActive] = useState(articlesId);
 
     return (
         <div className="flex my-24">
             <motion.div className="cards-container flex flex-shrink-0">
-                <Menu menu={isActive} menuFunc={setIsActive}/>
+                <Menu menu={isActive} menuFunc={setIsActive} />
                 <AnimatePresence>
                     {articlesBlobs.map((blob: { url: string, name: string }, index: number) => {
                         return (
                             <motion.div
                                 key={articlesId + index}
-                                style={{transition: "all 0.25s", transitionBehavior: "allow-discrete"}}
+                                style={{ transition: "all 0.25s", transitionBehavior: "allow-discrete" }}
                                 animate={isActive === articlesId ? { scale: 1 } : { scale: 0, display: "none" }}
                             >
-                                <Card menu={isActive} blob={blob} hasContent={true}/>
+                                <Card menu={isActive} blob={blob} hasContent={true} />
                             </motion.div>
                         )
                     })}
@@ -115,10 +114,10 @@ function GenerateCards({articlesBlobs, methodsBlobs, musicBlobs, artBlobs}:{
                         return (
                             <motion.div
                                 key={methodsId + index}
-                                style={{transition: "all 0.25s", transitionBehavior: "allow-discrete"}}
+                                style={{ transition: "all 0.25s", transitionBehavior: "allow-discrete" }}
                                 animate={isActive === methodsId ? { scale: 1 } : { scale: 0, display: "none" }}
                             >
-                                <Card menu={isActive} blob={blob} hasContent={true}/>
+                                <Card menu={isActive} blob={blob} hasContent={true} />
                             </motion.div>
                         )
                     })}
@@ -128,7 +127,7 @@ function GenerateCards({articlesBlobs, methodsBlobs, musicBlobs, artBlobs}:{
                         return (
                             <motion.div
                                 key={musicId + index}
-                                style={{transition: "all 0.25s", transitionBehavior: "allow-discrete"}}
+                                style={{ transition: "all 0.25s", transitionBehavior: "allow-discrete" }}
                                 animate={isActive === musicId ? { scale: 1 } : { scale: 0, display: "none" }}
                             >
                                 <Card menu={isActive} blob={blob} hasContent={false} />
@@ -141,10 +140,10 @@ function GenerateCards({articlesBlobs, methodsBlobs, musicBlobs, artBlobs}:{
                         return (
                             <motion.div
                                 key={artId + index}
-                                style={{transition: "all 0.25s", transitionBehavior: "allow-discrete"}}
+                                style={{ transition: "all 0.25s", transitionBehavior: "allow-discrete" }}
                                 animate={isActive === artId ? { scale: 1 } : { scale: 0, display: "none" }}
                             >
-                                <Card menu={isActive} blob={blob} hasContent={false}/>
+                                <Card menu={isActive} blob={blob} hasContent={false} />
                             </motion.div>
                         )
                     })}
@@ -176,13 +175,14 @@ function Cards() {
             .then((data) => setMusicBlobs(data));
     }, []);
     useEffect(() => {
-        fetch(`/api/img?prefix=art`)
+        fetch(`/api/img?prefix=design`)
             .then((res) => res.json())
             .then((data) => setArtBlobs(data));
     }, []);
+
     return (
         <div className="overflow-hidden select-none">
-            <GenerateCards articlesBlobs={articlesBlobs} methodsBlobs={methodsBlobs} musicBlobs={musicBlobs} artBlobs={artBlobs}/>
+            <GenerateCards articlesBlobs={articlesBlobs} methodsBlobs={methodsBlobs} musicBlobs={musicBlobs} artBlobs={artBlobs} />
         </div>
     );
 };
