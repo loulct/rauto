@@ -1,12 +1,9 @@
 "use client"
-import Counter from "./components/counter";
-import Title from "./components/title";
-import MarqueeText from "./components/marquee";
-import Cards from "./components/cards";
-import Experience from "./components/experience";
+
 import { useState, useEffect } from "react"
 import Loader from "./components/loader";
 import Spiral from "./components/spiral";
+import PageTest from "./components/pagetest"
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -24,7 +21,6 @@ function Home() {
       ) : (
         <>
           <Spiral />
-          <Experience />
           <div
             style={
               {
@@ -35,10 +31,7 @@ function Home() {
             className="home"
           >
             <main className="main">
-              <Title />
-              <Counter />
-              <MarqueeText />
-              <Cards />
+              <PageTest />
               <link rel="icon" href="/svg/favicon.svg" sizes="any" type="image/svg+xml"></link>
             </main>
           </div>

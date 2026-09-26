@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rouen Autonome",
-  description: "\"Groupuscule pseudo-militant\"",
+  title: "Néant et pesanteur",
+  description: "Néant et pesanteur",
 };
 
 export const viewport: Viewport = {
